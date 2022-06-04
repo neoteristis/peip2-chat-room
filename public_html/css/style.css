@@ -1,0 +1,54 @@
+/*
+    CSS for the header
+ */
+
+/* Make sure the page is the size of the screen*/
+html, body {
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Center the page title */
+#header {
+    width: 100%;
+    height: 75px;
+    position: relative;
+    top:0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    background-color: lightblue;
+}
+
+#container {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+#navigation {
+    display: table-cell;
+    width: 25%;
+    vertical-align: top;
+    background-color: darkgrey;
+
+    height: 100px;
+    overflow: auto;
+}
+
+#chatroom {
+    display: table-cell;
+    width: 75%;
+    vertical-align: top;
+    background-color: lightgrey;
+}
+
+#footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:8%;
+    background:lightblue;
+}

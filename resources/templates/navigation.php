@@ -1,11 +1,9 @@
-<div id="siteControls">
-    <ul class="categories">
-        <li>PHP</li>
-        <li>HTML</li>
-        <li>CSS</li>
-    </ul>
-    <div class="ads">
-        <!-- ads code -->
-    </div>
+<div id="navigation">
+    <?php
+    include("conversation.php");
 
+    for ($i = 0; $i <= 5; $i++) {
+        echo generate_conversation_div();
+    }
+    ?>
 </div>
