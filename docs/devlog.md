@@ -42,3 +42,6 @@ What the article proposes :
 ### Starting to work on the templates
 
 I'm following the way they are doing templates in the link from [Project Structure](#project-structure).
+
+I first tried to do it on my own but later learned that I can use any bootstrap for the project design.
+I used the following [template](https://bootsnipp.com/snippets/1ea0N)
