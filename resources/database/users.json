@@ -1,16 +1,26 @@
 {
-  "raphaelanjou": {
+  "pseudoraphael": {
     "firstname": "raphael",
     "lastname": "anjou",
     "password": "abcd",
-    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/raphaelanjou.svg",
-    "conversations": "1,2,3"
+    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/pseudoraphael.svg",
+    "channels": "1,2,3"
   },
-  "hugodurand": {
+  "pseudohugo": {
     "firstname": "hugo",
     "lastname": "durand",
     "password": "abcd",
-    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/hugodurand.svg",
-    "conversations": "3,2,1"
+    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/pseudohugo.svg",
+    "channels": "3,2,1"
+  },
+  "azer": {
+    "password": "13085a63a2b3e4beb7ab10ee395aefe4"
+  },
+  "azerrtty": {
+    "firstname": null,
+    "lastname": null,
+    "password": "azregr",
+    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/azerrtty.svg",
+    "channels": "3,2,1"
   }
 }

@@ -1,12 +1,12 @@
 {
   "1": {
-    "users": "raphaelanjou,hugodurand",
-    "creator": "raphaelanjou",
+    "users": "pseudoraphael,pseudohugo",
+    "creator": "pseudoraphael",
     "last-message-date": "06/06/2022"
   },
   "2": {
-    "users": "hugodurand,raphaelanjou",
-    "creator": "hugodurand",
+    "users": "pseudohugo,pseudoraphael",
+    "creator": "pseudohugo",
     "last-message-date": "06/06/2022"
   }
 }
