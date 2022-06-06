@@ -408,11 +408,12 @@ body {
 
 .reply {
     height: 60px;
-    width: 100%;
+    width: 120%;
     background-color: #f5f1ee;
     padding: 10px 5px 10px 5px !important;
     margin: 0 !important;
     z-index: 1000;
+    display: flex;
 }
 
 .reply-emojis {
