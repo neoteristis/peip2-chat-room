@@ -45,3 +45,9 @@ I'm following the way they are doing templates in the link from [Project Structu
 
 I first tried to do it on my own but later learned that I can use any bootstrap for the project design.
 I used the following [template](https://bootsnipp.com/snippets/1ea0N)
+
+## 06/06/2022
+
+I do not have enough to do that properly.
+End of project in a few days.
+Still not done any work.
