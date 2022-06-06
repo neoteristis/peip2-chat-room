@@ -1,0 +1,16 @@
+{
+  "raphaelanjou": {
+    "firstname": "raphael",
+    "lastname": "anjou",
+    "password": "abcd",
+    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/raphaelanjou.svg",
+    "conversations": "1,2,3"
+  },
+  "hugodurand": {
+    "firstname": "hugo",
+    "lastname": "durand",
+    "password": "abcd",
+    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/hugodurand.svg",
+    "conversations": "3,2,1"
+  }
+}
