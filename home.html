@@ -6,6 +6,7 @@
     <script type="text/javascript" src="js/simpleajax.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/channels.js"></script>
+    <script type="text/javascript" src="js/conversation.js"></script>
 </head>
 
 <body>
@@ -117,33 +118,6 @@
                 </div>
 
                 <div class="row message" id="conversation">
-                    <div class="row message-previous">
-                        <div class="col-sm-12 previous">
-                            <a>Show previous message</a>
-                        </div>
-                    </div>
-
-                    <div class="row message-body">
-                        <div class="col-sm-12 message-main-receiver">
-                            <div class="receiver">
-                                <!-- MESSAGE TEXT IS HERE -->
-                                <div class="message-text">
-                                    Hi, what are you doing?!
-                                </div>
-                                <!-- MESSAGE DATE IS HERE -->
-                                <span class="message-time pull-right">Sun</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row message-body">
-                        <div class="col-sm-12 message-main-sender">
-                            <div class="sender">
-                                <div class="message-text">I am doing nothing man!</div>
-                                <span class="message-time pull-right">Sun</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!----------------------------------------->
@@ -155,7 +129,7 @@
                         <textarea class="form-control" rows="1" id="comment"></textarea>
                     </div>
                     <div class="col-sm-1 col-xs-1 reply-send">
-                        <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+                        <i class="fa fa-send fa-2x" aria-hidden="true" onclick="sendNewMessage()"></i>
                     </div>
                 </div>
             </div>
