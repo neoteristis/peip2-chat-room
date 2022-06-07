@@ -1,12 +1,18 @@
 {
   "1": {
-    "users": "pseudoraphael,pseudohugo",
+    "name": "conversation01",
+    "users": ["pseudoraphael",
+              "pseudohugo"],
     "creator": "pseudoraphael",
-    "last-message-date": "06/06/2022"
+    "last-message-date": "06/06/2022",
+    "avatar": "https://ui-avatars.com/api/?name=C+O"
   },
   "2": {
-    "users": "pseudohugo,pseudoraphael",
+    "name": "Happy Birthday",
+    "users": ["pseudohugo",
+              "pseudoraphael"],
     "creator": "pseudohugo",
-    "last-message-date": "06/06/2022"
+    "last-message-date": "06/06/2022",
+    "avatar": "https://ui-avatars.com/api/?name=H+B"
   }
 }

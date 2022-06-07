@@ -1,26 +1,16 @@
 {
-  "pseudoraphael": {
+  "neoteristis": {
     "firstname": "raphael",
     "lastname": "anjou",
     "password": "abcd",
-    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/pseudoraphael.svg",
+    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/neoteristis.svg",
     "channels": "1,2,3"
   },
-  "pseudohugo": {
+  "HAND": {
     "firstname": "hugo",
     "lastname": "durand",
     "password": "abcd",
-    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/pseudohugo.svg",
-    "channels": "3,2,1"
-  },
-  "azer": {
-    "password": "13085a63a2b3e4beb7ab10ee395aefe4"
-  },
-  "azerrtty": {
-    "firstname": null,
-    "lastname": null,
-    "password": "azregr",
-    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/azerrtty.svg",
+    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/HAND.svg",
     "channels": "3,2,1"
   }
 }

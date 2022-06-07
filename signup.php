@@ -1,8 +1,8 @@
 <?php
 	$login = $_POST[ "pseudo" ];
-	$password = $_POST[ "password1" ];
-	$first_name = $_POST["first_name"];
-	$last_name = $_POST["last_name"];
+	$password = hash("md5", $_POST["password1"]);
+	$first_name = $_POST["firstname"];
+	$last_name = $_POST["lastname"];
     $avatar = "https://avatars.dicebear.com/api/adventurer-neutral/" . $login;
     $channels = "";
 
@@ -17,7 +17,8 @@
         "channels" => "3,2,1",
     );
 
-    print("<pre>".print_r($json,true)."</pre>");
     // Save the information to the database
     file_put_contents("resources/database/users.json", json_encode($json, JSON_UNESCAPED_SLASHES));
+
+    header("Location: home.html");
 ?>

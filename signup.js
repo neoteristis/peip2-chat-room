@@ -25,7 +25,7 @@ function checkform() {
         }
         return value;
     }**/
-
+    // TODO : Repair the fact that i can't output the true or false value
     function verifySignInData(users_data) {
         let users_pseudo = Object.keys(users_data);
 
