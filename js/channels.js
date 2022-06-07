@@ -97,6 +97,7 @@ function loadAllChannelPanels() {
 }
 
 function createNewChannel() {
+    // TODO : Add possibility to change the values from the user side
     let name = "HOLDER CONV";
     let users = ["user1",
         "user2"];
@@ -115,4 +116,35 @@ function createNewChannel() {
     function on_failure() {
         console.log("Oh shit... here we go again...");
     }
+}
+
+function channelsSearchBar() {
+    // get search bar element
+    const searchInput = document.getElementById("searchText");
+
+    // store name elements in array-like object
+    const namesFromDOM = document.getElementsByClassName("sideBar-body");
+
+    // listen for user events
+    searchInput.addEventListener("keyup", (event) => {
+        const { value } = event.target;
+
+        // get user search input converted to lowercase
+        const searchQuery = value.toLowerCase();
+
+        for (const nameElement of namesFromDOM) {
+            // store name text and convert to lowercase
+            let nameSpan = nameElement.getElementsByClassName("name-meta")[0];
+            let name = nameSpan.textContent.toLowerCase();
+
+            // compare current name to search input
+            if (name.includes(searchQuery)) {
+                // found name matching search, display it
+                nameElement.style.display = "block";
+            } else {
+                // no match, don't display name
+                nameElement.style.display = "none";
+            }
+        }
+    });
 }
