@@ -1,7 +1,9 @@
-function createNewChannelPanel(link_to_avatar, conversation_name) {
+function createNewChannelPanel(id, link_to_avatar, conversation_name) {
     const body = document.createElement("div");
     body.classList.add("row");
     body.classList.add("sideBar-body");
+    body.setAttribute("id", id);
+
 
     // --- BEGINNING OF AVATAR ---
     const avatar = document.createElement("div");
@@ -14,6 +16,9 @@ function createNewChannelPanel(link_to_avatar, conversation_name) {
 
     const avatar_image = document.createElement("img");
     avatar_image.src = link_to_avatar;
+    avatar_image.setAttribute("onmouseover", `displayDeleteIcon(${id})`);
+    avatar_image.setAttribute("onclick", `deleteChannel(${id})`);
+    avatar_image.setAttribute("onmouseout", `hideDeleteIcon(${id}, "${link_to_avatar}")`)
 
     avatar_icon.appendChild(avatar_image);
     avatar.appendChild(avatar_icon);
@@ -70,14 +75,15 @@ function createAllChannelPanels() {
             let channels = JSON.parse(request.responseText);
             let keys = Object.keys(channels);
 
-            for (const key_id in keys) {
-                let values = Object.values(channels[keys[key_id]]);
+            for (const key_id in keys.reverse()) {
+                let item_id = keys[key_id];
+                let values = Object.values(channels[item_id]);
                 let conv_name = values[0];
                 let users = values[1];
                 let creator = values[2];
                 let last_message_date = values[3];
                 let avatar_link = values[4];
-                createNewChannelPanel(avatar_link, conv_name);
+                createNewChannelPanel(item_id, avatar_link, conv_name);
             }
         }
     }, on_failure)
@@ -87,13 +93,10 @@ function createAllChannelPanels() {
     }
 }
 
-function loadAllChannelPanels() {
+function refreshAllChannelPanels() {
+    const content = document.getElementsByClassName("sideBar")[0];
+    content.innerHTML = '';
     createAllChannelPanels();
-
-    window.setTimeout(() => {
-        console.log("hi");
-    }, 1000)
-
 }
 
 function createNewChannel() {
@@ -109,7 +112,7 @@ function createNewChannel() {
         `?name=${name}&users=${users}&creator=${creator}&last-message-date=${last_message_date}&avatar=${avatar}`,
         request => {
             if (request.responseText) {
-                createNewChannelPanel(avatar, name);
+                refreshAllChannelPanels();
             }
         }, on_failure)
 
@@ -127,7 +130,7 @@ function channelsSearchBar() {
 
     // listen for user events
     searchInput.addEventListener("keyup", (event) => {
-        const { value } = event.target;
+        const {value} = event.target;
 
         // get user search input converted to lowercase
         const searchQuery = value.toLowerCase();
@@ -147,4 +150,38 @@ function channelsSearchBar() {
             }
         }
     });
+}
+
+function displayDeleteIcon(id) {
+    let image_link = "https://toppng.com/uploads/preview/big-trash-can-vector-trash-can-icon-1156305906701r6eta2fm.png"
+    const body = document.querySelector(`.sideBar`);
+    const panel = body.querySelector(`[id='${id}']`);
+    const avatar_icon = panel.querySelector(".avatar-icon");
+    const avatar_image = avatar_icon.firstChild;
+    avatar_image.src = image_link;
+}
+
+function hideDeleteIcon(id, link_to_avatar) {
+    const body = document.querySelector(`.sideBar`);
+    const panel = body.querySelector(`[id='${id}']`);
+    const avatar_icon = panel.querySelector(".avatar-icon");
+    const avatar_image = avatar_icon.firstChild;
+    avatar_image.src = link_to_avatar;
+}
+
+function deleteChannel(id) {
+    const body = document.querySelector(`.sideBar`);
+    const panel = body.querySelector(`[id='${id}']`);
+    panel.remove();
+
+    simpleAjax("remove_channel_from_database.php", "post",
+        `id=${id}`,
+        request => {
+            if (request.responseText) {
+            }
+        }, on_failure)
+
+    function on_failure() {
+        console.log("Oh shit... here we go again...");
+    }
 }
