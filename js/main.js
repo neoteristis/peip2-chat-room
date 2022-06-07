@@ -3,6 +3,6 @@ window.onload = function () {
 
     // PERMET DE CLIQUER SUR DES TRUCS
     document.getElementById("new-channel").onclick = function () {
-        loadNewChannel();
+        createNewChannel();
     }
 }

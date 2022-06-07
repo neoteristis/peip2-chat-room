@@ -68,9 +68,10 @@ function createAllChannelPanels() {
     simpleAjax("get_all_channels.php", "post", "", request => {
         if (request.responseText) {
             let channels = JSON.parse(request.responseText);
+            let keys = Object.keys(channels);
 
-            for (let i = 1; i <= Object.keys(channels).length; ++i) {
-                let values = Object.values(channels[i]);
+            for (const key_id in keys) {
+                let values = Object.values(channels[keys[key_id]]);
                 let conv_name = values[0];
                 let users = values[1];
                 let creator = values[2];
@@ -82,7 +83,7 @@ function createAllChannelPanels() {
     }, on_failure)
 
     function on_failure() {
-        console.log("shit");
+        console.log("Oh shit... here we go again...");
     }
 }
 
@@ -93,4 +94,25 @@ function loadAllChannelPanels() {
         console.log("hi");
     }, 1000)
 
+}
+
+function createNewChannel() {
+    let name = "HOLDER CONV";
+    let users = ["user1",
+        "user2"];
+    let creator = "user1";
+    let last_message_date = "06/06/2022";
+    let avatar = "https://ui-avatars.com/api/?name=H+C";
+
+    simpleAjax("add_channel_to_database.php", "post",
+        `?name=${name}&users=${users}&creator=${creator}&last-message-date=${last_message_date}&avatar=${avatar}`,
+        request => {
+            if (request.responseText) {
+                createNewChannelPanel(avatar, name);
+            }
+        }, on_failure)
+
+    function on_failure() {
+        console.log("Oh shit... here we go again...");
+    }
 }
