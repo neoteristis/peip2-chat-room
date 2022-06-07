@@ -14,5 +14,13 @@
     "creator": "pseudohugo",
     "last-message-date": "06/06/2022",
     "avatar": "https://ui-avatars.com/api/?name=H+B"
+  },
+  "3": {
+    "name": "test test",
+    "users": ["pseudohugo",
+      "pseudoraphael"],
+    "creator": "pseudohugo",
+    "last-message-date": "06/06/2022",
+    "avatar": "https://ui-avatars.com/api/?name=H+B"
   }
 }

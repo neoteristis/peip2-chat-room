@@ -1,7 +1,8 @@
 window.onload = function () {
     loadAllChannelPanels();
 
-    document.getElementsByClassName("sideBar").onclick = function () {
-        console.log("nice");
+    // PERMET DE CLIQUER SUR DES TRUCS
+    document.getElementById("new-channel").onclick = function () {
+        loadNewChannel();
     }
 }
