@@ -15,7 +15,15 @@ function checkform() {
         });
 
     promise.then(booleanValue => {
-        document.getElementById("submit").setAttribute("submit", booleanValue.toString());
+        console.log(booleanValue);
+        document.getElementById("submit").setAttribute("submit", "return " + booleanValue.toString());
+        /**let submitDiv = document.getElementById("signup-form");
+        submitDiv.submit();
+        console.log(document.getElementById("submit").getAttribute("submit"));**/
+        console.log(document);
+        let form = document.getElementsByTagName("form")[0];
+        console.log(form);
+        form.submit();
     });
 
     /**
