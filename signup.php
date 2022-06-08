@@ -40,7 +40,7 @@
         <label for="pass2"></label>
         <input id="pass2" type="password" name="password2">
         <br><br>
-        <input type="submit" value="S'inscrire">
+        <input id="submit" type="submit" value="S'inscrire">
         <input type="reset" value="Annuler">
     </form>
 

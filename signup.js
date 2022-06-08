@@ -14,9 +14,16 @@ function checkform() {
             return booleanValue;
         });
 
-    promise.then(verifySignInData)
+    promise.then(booleanValue => {
+        document.getElementById("submit").setAttribute("submit", booleanValue.toString());
+    });
 
-    // TODO : Repair the fact that i can't output the true or false value
+    /**
+     * Verify that the element used to sign up are correct
+     *
+     * @param users_data
+     * @returns {boolean}
+     */
     function verifySignInData(users_data) {
         let users_pseudo = Object.keys(users_data);
 
@@ -55,6 +62,7 @@ function checkform() {
 
         return true;
     }
+    return document.getElementById("submit").getAttribute("submit");
 }
 
 // efface le contenu de l'élément où on affiche
