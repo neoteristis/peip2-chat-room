@@ -20,9 +20,15 @@ window.onload = function () {
         channelsSearchBar();
     }, 10);
 
-    // TODO : Not working
-
     document.querySelector('#comment').addEventListener('keydown', keyDownEvent);
+    document.querySelector('#comment').addEventListener('keyup', keyUpEvent);
 
-    document.querySelector('#comment').addEventListener('keyup', keyUpEvent)
+    /**
+    // TODO: AutoGrow the chat input box | I need to change the css to let some place to the box
+    function auto_grow(element) {
+        element.style.height = "5px";
+        element.style.height = (element.scrollHeight)+"px";
+    }
+    console.log(document.getElementById("comment"));
+    auto_grow(document.getElementById("comment"));**/
 }

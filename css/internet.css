@@ -462,7 +462,6 @@ body {
 .reply-main textarea {
     width: 100%;
     resize: none;
-    overflow: hidden;
     padding: 5px !important;
     outline: none;
     border: none;
@@ -470,6 +469,10 @@ body {
     box-shadow: none;
     height: 100%;
     font-size: 16px;
+
+    /* Scroll bar */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .reply-main textarea:focus {

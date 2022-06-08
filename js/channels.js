@@ -99,6 +99,13 @@ function createEmptyChannelPanel() {
 }
 
 /**
+ * Function to delete the panel that appears when there are no existing channels
+ */
+function deleteEmptyChannelPanel() {
+    document.getElementById("empty-channel").remove();
+}
+
+/**
  * Create all the channels panel from the database
  */
 function createAllChannelsPanel() {
