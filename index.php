@@ -1,7 +1,7 @@
 <?php
-    if (isset($_GET["login"])) {
-        header("Location: home.html");
+    if (isset($_GET["pseudo"])) {
+        header("Location: home.php");
     } else {
-        header("Location: exo4-formulaire.html");
+        header("Location: dosignup.php");
     }
 ?>
