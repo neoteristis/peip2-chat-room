@@ -6,7 +6,10 @@ function createNewChannelPanel(id, link_to_avatar, conversation_name, selected) 
     const body = document.createElement("div");
     body.classList.add("row", "sideBar-body");
     body.setAttribute("id", "channel" + id);
-    body.setAttribute("onclick", `switchChannel(${id}, "${link_to_avatar}", "${conversation_name}")`);
+
+    let onclickValue = `switchChannel(${id}, "${link_to_avatar}", "${conversation_name}")`;
+
+    body.setAttribute("onclick", onclickValue);
 
     // TODO: fix the fact that it never enters in the if
     if (selected) {
@@ -23,7 +26,11 @@ function createNewChannelPanel(id, link_to_avatar, conversation_name, selected) 
     const avatar_image = document.createElement("img");
     avatar_image.src = link_to_avatar;
     avatar_image.setAttribute("onmouseover", `displayDeleteIcon(${id})`);
-    avatar_image.setAttribute("onclick", `deleteChannel(${id})`);
+    let onclickValueDelete = `(function(){
+        event.stopPropagation();
+        deleteChannel(${id});
+    })();`
+    avatar_image.setAttribute("onclick", onclickValueDelete);
     avatar_image.setAttribute("onmouseout", `hideDeleteIcon(${id}, "${link_to_avatar}")`)
 
     avatar_icon.appendChild(avatar_image);
@@ -246,23 +253,43 @@ function hideDeleteIcon(id, link_to_avatar) {
  * Is triggered by an onclick on the channel panel trashcan icon
  */
 function deleteChannel(id) {
-    const body = document.querySelector(`.sideBar`);
-    const panel = body.querySelector(`[id='channel${id}']`);
-    panel.remove();
-    removeConversationContentFromHTML();
-
     simpleAjax("remove_channel_from_database.php", "post",
         `id=${id}`,
         request => {
-            if (request.responseText) {
-            }
+            getIdMostRecentConv().then(
+                res_id => {
+                    let new_id = parseInt(res_id.toString());
+                    let div = document.getElementById("channel" + new_id);
+                    let img = div.getAttribute("onclick").split(", ")[1].replace('"', "");
+                    let channel_name = div.getElementsByClassName("name-meta")[0].innerText;
+                    switchChannel(new_id, img, channel_name);
+                }
+            );
         }, on_failure)
 
     function on_failure() {
         console.log("Oh shit... here we go again...");
     }
 
-    switchChannel(getIdMostRecentConv());
+    /**getIdMostRecentConv().then(
+        id => {
+            console.log("second");
+            let new_id = parseInt(id.toString()) + 1;
+            console.log(new_id);
+            let div = document.getElementById("channel" + new_id);
+            let img = div.getAttribute("onclick").split(", ")[1].replace('"', "");
+            let channel_name = div.getElementsByClassName("name-meta")[0].innerText;
+            switchChannel(new_id, img, channel_name);
+        }
+    );**/
+
+    const body = document.querySelector(`.sideBar`);
+    const panel = body.querySelector(`[id='channel${id}']`);
+
+    panel.remove();
+
+    removeConversationContentFromHTML();
+
 }
 
 /**
@@ -271,11 +298,10 @@ function deleteChannel(id) {
  */
 function switchChannel(new_id, avatar_link, name) {
     let old = document.getElementsByClassName("selected-channel")[0];
-    if (old) {
+    if (old !== undefined) {
         old.classList.remove("selected-channel");
     }
-
-    const body = document.getElementById(`channel${new_id}`);
+    const body = document.getElementById("channel" + new_id);
     body.classList.add("selected-channel");
 
     if (avatar_link !== undefined && name !== undefined) {
@@ -285,10 +311,14 @@ function switchChannel(new_id, avatar_link, name) {
     refreshConversation(new_id);
 }
 
-function getIdMostRecentConv() {
+async function getIdMostRecentConv() {
     // TODO : Write function to get the id of the most recent conv
-    return 1;
+
+    // For the moment it only get the first conversation by ID
+    let response = await fetch("get_id_most_recent_conv.php");
+    return response.text();
 }
+
 
 /**
  * Update the heading of the channel that is placed above a conversation

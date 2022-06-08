@@ -7,7 +7,6 @@ function checkform() {
     let password1 = document.getElementById("pass1").value;
     let password2 = document.getElementById("pass2").value;
 
-    /**
     const promise = fetch("/resources/database/users.json")
         .then((response) => response.json())
         .then((user) => verifySignInData(user))
@@ -15,16 +14,8 @@ function checkform() {
             return booleanValue;
         });
 
-    async function example() {
-        try {
-            const value = await promise;
-            console.log("------");
-            console.log(value);
-        } catch (err) {
-            console.log(err);
-        }
-        return value;
-    }**/
+    promise.then(verifySignInData)
+
     // TODO : Repair the fact that i can't output the true or false value
     function verifySignInData(users_data) {
         let users_pseudo = Object.keys(users_data);

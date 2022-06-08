@@ -3,14 +3,10 @@ window.onload = function () {
 
     // TODO : Error ID not found because undefined element
     let div = document.getElementsByClassName("selected-channel")[0];
-    let id_number;
-    if (div === undefined) {
-        // TODO : Find the id of the most recent conv
-        id_number = 1;
-    } else {
-        id_number = div.id.replace("channel", "");
+    if (div !== undefined) {
+        let id_number = div.id.replace("channel", "");
+        createConversation(id_number);
     }
-    createConversation(id_number);
 
     document.getElementById("new-channel").onclick = function () {
         createNewChannel();
@@ -24,11 +20,11 @@ window.onload = function () {
     document.querySelector('#comment').addEventListener('keyup', keyUpEvent);
 
     /**
-    // TODO: AutoGrow the chat input box | I need to change the css to let some place to the box
-    function auto_grow(element) {
+     // TODO: AutoGrow the chat input box | I need to change the css to let some place to the box
+     function auto_grow(element) {
         element.style.height = "5px";
         element.style.height = (element.scrollHeight)+"px";
     }
-    console.log(document.getElementById("comment"));
-    auto_grow(document.getElementById("comment"));**/
+     console.log(document.getElementById("comment"));
+     auto_grow(document.getElementById("comment"));**/
 }

@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (isset($_SESSION["login"])) {
+        header("Location: signup.php");
+        exit();
+    }
+?>
+
 <html>
 <head>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

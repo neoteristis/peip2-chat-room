@@ -1,18 +1,1 @@
-{
-  "neoteristis": {
-    "pseudo": "neoteristis",
-    "firstname": "raphael",
-    "lastname": "anjou",
-    "password": "abcd",
-    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/neoteristis.svg",
-    "channels": "1,2,3"
-  },
-  "HAND": {
-    "pseudo": "hand",
-    "firstname": "hugo",
-    "lastname": "durand",
-    "password": "abcd",
-    "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/HAND.svg",
-    "channels": "3,2,1"
-  }
-}
+{"neoteristis":{"pseudo":"neoteristis","firstname":"raphael","lastname":"anjou","password":"abcd","avatar":"https://avatars.dicebear.com/api/adventurer-neutral/neoteristis.svg","channels":"1,2,3"},"HAND":{"pseudo":"hand","firstname":"hugo","lastname":"durand","password":"abcd","avatar":"https://avatars.dicebear.com/api/adventurer-neutral/HAND.svg","channels":"3,2,1"},"":{"firstname":null,"lastname":null,"password":"d41d8cd98f00b204e9800998ecf8427e","avatar":"https://avatars.dicebear.com/api/adventurer-neutral/.svg","channels":"3,2,1"},"a":{"firstname":"","lastname":"","password":"d41d8cd98f00b204e9800998ecf8427e","avatar":"https://avatars.dicebear.com/api/adventurer-neutral/a.svg","channels":"3,2,1"}}

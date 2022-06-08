@@ -1,24 +1,50 @@
-<?php
-	$login = $_POST[ "pseudo" ];
-	$password = hash("md5", $_POST["password1"]);
-	$first_name = $_POST["firstname"];
-	$last_name = $_POST["lastname"];
-    $avatar = "https://avatars.dicebear.com/api/adventurer-neutral/" . $login;
-    $channels = "";
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>TP 1 - Exo 4</title>
+    <meta name="author" content="Marc Gaetano">
+    <link rel="stylesheet" href="css/tp1.css">
+    <link rel="stylesheet" href="css/exo4.css">
+    <script src="signup.js"></script>
+</head>
+<body>
+    <h1>TP 1 - Exo 4</h1>
+    <hr>
 
-	$file_data = file_get_contents('resources/database/users.json');
-    $json = json_decode($file_data, true);
+    <h2>Formulaire d'inscription</h2>
 
-    $json[$login] = array(
-        "firstname" => $first_name,
-        "lastname" => $last_name,
-        "password" => $password,
-        "avatar" => "https://avatars.dicebear.com/api/adventurer-neutral/{$login}.svg",
-        "channels" => "3,2,1",
-    );
+    <form action="dosignup.php" method="post" onsubmit="return checkform()" onreset="resetform()">
+        Choisissez votre pseudo (minimum 3 caractères, uniquement des lettres minuscules ou majuscules)
+        <br>
+        <label for="pseudo"></label>
+        <input id="pseudo" type="text" name="pseudo">
+        <br><br>
+        Quel est votre prénom ?
+        <br>
+        <label for="firstname"></label>
+        <input id="firstname" type="text" name="firstname">
+        <br><br>
+        Quel est votre nom ?
+        <br>
+        <label for="lastname"></label>
+        <input id="lastname" type="text" name="lastname">
+        <br><br>
+        Choisissez votre mot de passe (minimum 4 caractères)
+        <br>
+        <label for="pass1"></label>
+        <input id="pass1" type="password" name="password1">
+        <br>
+        Répétez votre mot de passe
+        <br>
+        <label for="pass2"></label>
+        <input id="pass2" type="password" name="password2">
+        <br><br>
+        <input type="submit" value="S'inscrire">
+        <input type="reset" value="Annuler">
+    </form>
 
-    // Save the information to the database
-    file_put_contents("resources/database/users.json", json_encode($json, JSON_UNESCAPED_SLASHES));
-
-    header("Location: home.html");
-?>
+    <div id="erreur" style="visibility: hidden">
+    </div>
+</body>
+</html>
