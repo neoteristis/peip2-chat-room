@@ -171,6 +171,11 @@ body {
     height: calc(100% - 120px);
 }
 
+/** @author: RAPHAEL ANJOU**/
+.selected-channel {
+    background-color: #f7f7f7;
+}
+
 .sideBar-body {
     position: relative;
     padding: 10px !important;
@@ -180,9 +185,10 @@ body {
     cursor: pointer;
 }
 
+/**
 .sideBar-body:hover {
     background-color: #f2f2f2;
-}
+}**/
 
 .sideBar-avatar {
     text-align: center;

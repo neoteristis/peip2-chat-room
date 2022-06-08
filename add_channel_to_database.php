@@ -32,5 +32,10 @@
     // Save the information to the database
     file_put_contents("resources/database/channels.json", json_encode($json, JSON_UNESCAPED_SLASHES));
 
-    header("Location: home.html");
+    // Create the file that will hold the conversations
+    $file = fopen("resources/database/conversations/{$id}.csv", "a");
+    fclose($file);
+
+    // Output the data to the AJAX method
+    echo $id . " " . $avatar;
 ?>

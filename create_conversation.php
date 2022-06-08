@@ -1,7 +1,7 @@
 <?php
 
 $id = $_POST["id"];
-$id = 1;
+
 $file = fopen("resources/database/conversations/{$id}.csv", "r");
 
 $csvData = array();
@@ -12,6 +12,4 @@ while (($row = fgetcsv($file, 0, ",")) !== FALSE) {
     $i++;
 }
 
-$reverse_row = array_reverse($csvData, true);
-
-echo json_encode($reverse_row, JSON_UNESCAPED_SLASHES);
+echo json_encode($csvData, JSON_UNESCAPED_SLASHES);

@@ -4,7 +4,7 @@ function createConversation(id) {
             let conversation = JSON.parse(request.responseText);
             let keys = Object.keys(conversation);
 
-            for (const key_id in keys.reverse()) {
+            for (const key_id in keys) {
                 let item_id = keys[key_id];
                 let values = Object.values(conversation[item_id]);
                 let author = values[0];
@@ -16,6 +16,8 @@ function createConversation(id) {
 
                 createMessagePanel(user_type, author, timestamp, message);
             }
+            const convDiv = document.getElementById("conversation");
+            convDiv.scrollTop = convDiv.scrollHeight;
         }
     }, on_failure)
 
@@ -68,19 +70,20 @@ function sendNewMessage() {
     const convInput = document.getElementById("comment");
     let message = convInput.value;
     convInput.value = "";
+
     createMessagePanel("sender", "username", "DATE", message);
+
+    const convDiv = document.getElementById("conversation");
+    convDiv.scrollTop = convDiv.scrollHeight;
 
     let id = getCurrentConvId();
     let author = getCurrentUser();
     let timestamp = "12:12:12 12/30/42";
 
-    console.log(id, author, timestamp, message);
-
     simpleAjax("add_message_to_database.php", "post",
         `id=${id}&author=${author}&timestamp=${timestamp}&message=${message}`,
         request => {
             if (request.responseText) {
-                refreshConversation();
             }
         }, on_failure)
 
@@ -89,16 +92,37 @@ function sendNewMessage() {
     }
 }
 
-function refreshConversation() {
+function removeConversationContentFromHTML() {
     const content = document.getElementById("conversation");
     content.innerHTML = '';
-    createConversation();
+}
+
+function refreshConversation(id) {
+    removeConversationContentFromHTML()
+    createConversation(id);
 }
 
 function getCurrentConvId() {
-    return 1;
+    return document.getElementsByClassName("selected-channel")[0].id.replace("channel", "");
 }
 
 function getCurrentUser() {
     return "naxomi";
+}
+
+// Management of the keys being pressed for shortcuts in the text area
+let keysPressed = {};
+
+function keyDownEvent(event) {
+    keysPressed[event.key] = true;
+
+    if (keysPressed["Shift"] && keysPressed["Enter"]) {
+        sendNewMessage();
+    }
+    return false;
+}
+
+function keyUpEvent(event) {
+    keysPressed[event.key] = false;
+    return false;
 }
