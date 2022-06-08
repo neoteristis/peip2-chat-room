@@ -6,7 +6,7 @@ function createNewChannelPanel(id, link_to_avatar, conversation_name, selected) 
     const body = document.createElement("div");
     body.classList.add("row", "sideBar-body");
     body.setAttribute("id", "channel" + id);
-    body.setAttribute("onclick", `switchChannel(${id})`);
+    body.setAttribute("onclick", `switchChannel(${id}, "${link_to_avatar}", "${conversation_name}")`);
 
     // TODO: fix the fact that it never enters in the if
     if (selected) {
@@ -65,6 +65,8 @@ function createNewChannelPanel(id, link_to_avatar, conversation_name, selected) 
     body.appendChild(main);
 
     document.querySelector(".sideBar").insertBefore(body, document.querySelector(".sideBar").firstChild);
+
+    fillChannelHeading(link_to_avatar, conversation_name);
 }
 
 /**
@@ -169,7 +171,7 @@ function createNewChannel() {
                 let id = info[0];
                 let link_to_avatar = info[1];
                 createNewChannelPanel(id, link_to_avatar, name, false);
-                switchChannel(id);
+                switchChannel(id, link_to_avatar, name);
             }
         }, on_failure)
 
@@ -267,7 +269,7 @@ function deleteChannel(id) {
  * Switch to a new channel by selecting the panel of the new channel
  * Display the conversation of the selected channel
  */
-function switchChannel(new_id) {
+function switchChannel(new_id, avatar_link, name) {
     let old = document.getElementsByClassName("selected-channel")[0];
     if (old) {
         old.classList.remove("selected-channel");
@@ -276,10 +278,25 @@ function switchChannel(new_id) {
     const body = document.getElementById(`channel${new_id}`);
     body.classList.add("selected-channel");
 
+    if (avatar_link !== undefined && name !== undefined) {
+        fillChannelHeading(avatar_link, name);
+    }
+
     refreshConversation(new_id);
 }
 
 function getIdMostRecentConv() {
     // TODO : Write function to get the id of the most recent conv
     return 1;
+}
+
+/**
+ * Update the heading of the channel that is placed above a conversation
+ */
+function fillChannelHeading(avatar_link, name) {
+    document.getElementsByClassName("conversation")[0]
+        .getElementsByClassName("heading-avatar-icon")[0]
+        .getElementsByTagName("img")[0].src = avatar_link;
+    document.getElementsByClassName("heading-name-meta")[0].innerHTML = name;
+
 }
