@@ -271,18 +271,6 @@ function deleteChannel(id) {
         console.log("Oh shit... here we go again...");
     }
 
-    /**getIdMostRecentConv().then(
-        id => {
-            console.log("second");
-            let new_id = parseInt(id.toString()) + 1;
-            console.log(new_id);
-            let div = document.getElementById("channel" + new_id);
-            let img = div.getAttribute("onclick").split(", ")[1].replace('"', "");
-            let channel_name = div.getElementsByClassName("name-meta")[0].innerText;
-            switchChannel(new_id, img, channel_name);
-        }
-    );**/
-
     const body = document.querySelector(`.sideBar`);
     const panel = body.querySelector(`[id='channel${id}']`);
 

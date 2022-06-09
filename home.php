@@ -13,11 +13,11 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="css/internet.css">
 
-
     <script type="text/javascript" src="js/simpleajax.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/channels.js"></script>
     <script type="text/javascript" src="js/conversation.js"></script>
+    <script type="text/javascript" src="js/user_profile.js"></script>
 </head>
 
 <body>
@@ -37,6 +37,11 @@
                                 <img id="current-user-avatar" src="https://images.pond5.com/circle-loading-icon-transparent-background-footage-126963108_iconl.jpeg" alt="user-avatar">
                             </div>
                         </div>
+
+                        <div id="current-user-pseudo" class="col-sm-4 col-xs-4">
+                            User Pseudo
+                        </div>
+
                         <div class="col-sm-1 col-xs-1  heading-dot  pull-right">
                             <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
                         </div>

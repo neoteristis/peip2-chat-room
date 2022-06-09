@@ -2,6 +2,8 @@
 // - si ils le sont, retourne 'true'
 // - sinon, affiche le message d'erreur adéquat dans
 //   l'emplacement prévu à cet effet, et retourne 'false'
+
+// TODO: Fix the form | User is still redirected to home page even with wrong input
 function checkform() {
     let login = document.getElementById("pseudo").value;
     let password1 = document.getElementById("pass1").value;
