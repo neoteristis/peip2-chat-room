@@ -1,7 +1,6 @@
 window.onload = function () {
     createAllChannelsPanel();
 
-    // TODO : Error ID not found because undefined element
     let div = document.getElementsByClassName("selected-channel")[0];
     if (div !== undefined) {
         let id_number = div.id.replace("channel", "");
@@ -36,8 +35,15 @@ window.onload = function () {
 
     update_user_profile();
 
-    // TODO: Make a good method to update stuff
     window.setInterval(function () {
-        reloadConversation(getCurrentConvId());
-    }, 500)
+        let id = getCurrentConvId();
+
+        if (typeof id === 'object' && typeof id.then === 'function') {
+            id.then(item => {
+                if (item !== "0") {
+                    createConversation(item)
+                }
+            });
+        }
+    }, 10)
 }

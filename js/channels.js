@@ -90,6 +90,10 @@ function createNewChannelPanel(id, link_to_avatar, conversation_name, selected) 
     document.querySelector(".sideBar").insertBefore(body, document.querySelector(".sideBar").firstChild);
 
     fillChannelHeading(link_to_avatar, conversation_name);
+
+    if (document.getElementById("empty-channel")) {
+        deleteEmptyChannelPanel();
+    }
 }
 
 /**
@@ -274,11 +278,15 @@ function deleteChannel(id) {
         request => {
             getIdMostRecentConv().then(
                 res_id => {
-                    let new_id = parseInt(res_id.toString());
-                    let div = document.getElementById("channel" + new_id);
-                    let img = div.getAttribute("onclick").split(", ")[1].replace('"', "");
-                    let channel_name = div.getElementsByClassName("name-meta")[0].innerText;
-                    switchChannel(new_id, img, channel_name);
+                    if (res_id === "0") {
+                        createEmptyChannelPanel();
+                    } else {
+                        let new_id = parseInt(res_id.toString());
+                        let div = document.getElementById("channel" + new_id);
+                        let img = div.getAttribute("onclick").split(", ")[1].replace('"', "");
+                        let channel_name = div.getElementsByClassName("name-meta")[0].innerText;
+                        switchChannel(new_id, img, channel_name);
+                    }
                 }
             );
         }, on_failure)
@@ -312,15 +320,20 @@ function switchChannel(new_id, avatar_link, name) {
         fillChannelHeading(avatar_link, name);
     }
 
-    reloadConversation(new_id);
+    createConversation(new_id);
 }
 
 async function getIdMostRecentConv() {
     // TODO : Write function to get the id of the most recent conv
 
     // For the moment it only get the first conversation by ID
-    let response = await fetch("get_id_most_recent_conv.php");
-    return response.text();
+    try {
+        let response = await fetch("get_id_most_recent_conv.php");
+        return response.text();
+    } catch (e) {
+        return 0;
+    }
+
 }
 
 /**

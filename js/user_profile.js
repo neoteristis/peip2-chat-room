@@ -14,7 +14,7 @@ function update_user_profile() {
         "",
         request => {
             if (request.responseText) {
-                document.getElementById("current-user-pseudo").innerText = request.responseText;
+                document.getElementById("current-user-pseudo").innerText = "Pseudo : " + request.responseText;
             }
         }, on_failure);
 

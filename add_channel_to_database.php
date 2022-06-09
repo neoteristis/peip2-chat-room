@@ -19,7 +19,11 @@
 	$file_data = file_get_contents('resources/database/channels.json');
     $json = json_decode($file_data, true);
 
-    $id = max(array_keys($json)) + 1;
+    if (count($json) == 0) {
+        $id = 1;
+    } else {
+        $id = max(array_keys($json)) + 1;
+    }
 
     $json[$id] = array(
         "name" => $name,

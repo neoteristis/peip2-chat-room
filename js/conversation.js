@@ -4,6 +4,8 @@ function createConversation(id) {
             let conversation = JSON.parse(request.responseText);
             let keys = Object.keys(conversation);
 
+            removeConversationContentFromHTML()
+
             for (const key_id in keys) {
                 let item_id = keys[key_id];
                 let values = Object.values(conversation[item_id]);
@@ -11,7 +13,6 @@ function createConversation(id) {
                 let timestamp = values[1];
                 let message = values[2];
 
-                // TODO : Choose user type correctly
                 if (getCurrentUser() === author) {
                     createMessagePanel("sender", author, timestamp, message);
                 } else {
@@ -29,7 +30,6 @@ function createConversation(id) {
 }
 
 function createMessagePanel(type, user, timestamp, message) {
-    // TODO : Implement the fact that if the user is the sender then it is a specific class of message
     const body = document.createElement("div");
     body.classList.add("row");
     body.classList.add("message-body");
@@ -82,15 +82,17 @@ function sendNewMessage() {
     let author = getCurrentUser();
     let timestamp = "12:12:12 12/30/42";
 
-    simpleAjax("add_message_to_database.php", "post",
-        `id=${id}&author=${author}&timestamp=${timestamp}&message=${message}`,
-        request => {
-            if (request.responseText) {
-            }
-        }, on_failure)
+    if (id !== "0") {
+        simpleAjax("add_message_to_database.php", "post",
+            `id=${id}&author=${author}&timestamp=${timestamp}&message=${message}`,
+            request => {
+                if (request.responseText) {
+                }
+            }, on_failure)
 
-    function on_failure() {
-        console.log("Oh shit... here we go again...");
+        function on_failure() {
+            console.log("Oh shit... here we go again...");
+        }
     }
 }
 
@@ -99,13 +101,13 @@ function removeConversationContentFromHTML() {
     content.innerHTML = '';
 }
 
-function reloadConversation(id) {
-    removeConversationContentFromHTML()
-    createConversation(id);
-}
-
 function getCurrentConvId() {
-    return document.getElementsByClassName("selected-channel")[0].id.replace("channel", "");
+
+    try {
+        return document.getElementsByClassName("selected-channel")[0].id.replace("channel", "");
+    } catch (e) {
+        return getIdMostRecentConv();
+    }
 }
 
 function getCurrentUser() {
