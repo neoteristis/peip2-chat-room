@@ -17,7 +17,7 @@ window.onload = function () {
 
     /**
      * Constantly updated to be reactive when someone is searching an item in the search bar
-    **/
+     **/
     window.setInterval(function () {
         channelsSearchBar();
     }, 10);
@@ -35,4 +35,9 @@ window.onload = function () {
      auto_grow(document.getElementById("comment"));**/
 
     update_user_profile();
+
+    // TODO: Make a good method to update stuff
+    window.setInterval(function () {
+        reloadConversation(getCurrentConvId());
+    }, 500)
 }

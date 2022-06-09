@@ -12,9 +12,11 @@ function createConversation(id) {
                 let message = values[2];
 
                 // TODO : Choose user type correctly
-                let user_type = "sender"
-
-                createMessagePanel(user_type, author, timestamp, message);
+                if (getCurrentUser() === author) {
+                    createMessagePanel("sender", author, timestamp, message);
+                } else {
+                    createMessagePanel("receiver", author, timestamp, message);
+                }
             }
             const convDiv = document.getElementById("conversation");
             convDiv.scrollTop = convDiv.scrollHeight;
@@ -97,7 +99,7 @@ function removeConversationContentFromHTML() {
     content.innerHTML = '';
 }
 
-function refreshConversation(id) {
+function reloadConversation(id) {
     removeConversationContentFromHTML()
     createConversation(id);
 }
@@ -107,7 +109,7 @@ function getCurrentConvId() {
 }
 
 function getCurrentUser() {
-    return "naxomi";
+    return document.getElementById("current-user-pseudo").innerText;
 }
 
 // Management of the keys being pressed for shortcuts in the text area

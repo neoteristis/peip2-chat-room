@@ -45,6 +45,7 @@ function createNewChannelPanel(id, link_to_avatar, conversation_name, selected) 
     const row = document.createElement("div");
     row.classList.add("row");
 
+    // START OF NAME DIV
     const nameDiv = document.createElement("div");
     nameDiv.classList.add("col-sm-8", "col-xs-8", "sideBar-name");
 
@@ -53,7 +54,9 @@ function createNewChannelPanel(id, link_to_avatar, conversation_name, selected) 
     nameSpan.innerText = conversation_name;
 
     nameDiv.appendChild(nameSpan);
+    // END OF NAME DIV
 
+    // START OF TIME DIV
     const timeDiv = document.createElement("div");
     timeDiv.classList.add("col-sm-4", "col-xs-4", "pull-right", "sideBar-time");
 
@@ -62,9 +65,22 @@ function createNewChannelPanel(id, link_to_avatar, conversation_name, selected) 
     timeSpan.innerText = "12:34"; // TODO : Add real hour of last message
 
     timeDiv.appendChild(timeSpan);
+    // END OF TIME DIV
+
+    // START OF UNREAD MESSAGE DIV
+    const unreadDiv = document.createElement("div");
+    unreadDiv.classList.add("col-sm-4", "col-xs-4", "sideBar-time");
+
+    const unreadSpan = document.createElement("span");
+    unreadSpan.classList.add("time-meta", "pull-right");
+    unreadSpan.innerText = "0 unread"; // TODO : Add real hour of last message
+
+    unreadDiv.appendChild(unreadSpan);
+    // END OF UNREAD MESSAGE DIV
 
     row.appendChild(nameDiv);
     row.appendChild(timeDiv);
+    row.appendChild(unreadDiv);
 
     main.appendChild(row);
     // --- END OF MAIN ---
@@ -296,7 +312,7 @@ function switchChannel(new_id, avatar_link, name) {
         fillChannelHeading(avatar_link, name);
     }
 
-    refreshConversation(new_id);
+    reloadConversation(new_id);
 }
 
 async function getIdMostRecentConv() {
@@ -306,7 +322,6 @@ async function getIdMostRecentConv() {
     let response = await fetch("get_id_most_recent_conv.php");
     return response.text();
 }
-
 
 /**
  * Update the heading of the channel that is placed above a conversation
