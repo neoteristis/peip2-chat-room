@@ -1,21 +1,29 @@
+<?php
+session_start();
+
+if (isset($_SESSION["pseudo"])){
+    header("Location: ../home.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <title>TP 1 - Exo 4</title>
     <meta name="author" content="Marc Gaetano">
-    <link rel="stylesheet" href="css/tp1.css">
-    <link rel="stylesheet" href="css/exo4.css">
-    <script src="signup.js"></script>
+    <link rel="stylesheet" href="../css/tp1.css">
+    <link rel="stylesheet" href="../css/exo4.css">
+    <script src="../js/signup.js"></script>
 </head>
 <body>
     <h1>TP 1 - Exo 4</h1>
     <hr>
 
     <h2>Formulaire d'inscription</h2>
+    <a href="signin.php">J'ai déjà un compte</a>
 
     <!--<form action="dosignup.php" method="post" onsubmit="return checkform()" onreset="resetform()">-->
-    <form action="dosignup.php" method="post" onsubmit="return checkform()" onreset="resetform()" id="signup-form">
+    <form action="dosignup.php" method="post" onreset="resetform()" id="signup-form">
         Choisissez votre pseudo (minimum 3 caractères, uniquement des lettres minuscules ou majuscules)
         <br>
         <label for="pseudo"></label>
@@ -45,7 +53,13 @@
         <input type="reset" value="Annuler">
     </form>
 
-    <div id="erreur" style="visibility: hidden">
-    </div>
+    <?php
+    if (isset($_SESSION["bad-signup"])) {
+        echo "<div id='erreur'>";
+        echo $_SESSION["bad-signup"];
+        echo "</div>";
+    }
+    ?>
+    
 </body>
 </html>

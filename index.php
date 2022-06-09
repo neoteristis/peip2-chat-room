@@ -1,7 +1,7 @@
 <?php
-    if (isset($_GET["pseudo"])) {
+    if (isset($_POST["pseudo"])) {
         header("Location: home.php");
     } else {
-        header("Location: dosignup.php");
+        header("Location: php/signin.php");
     }
 ?>
