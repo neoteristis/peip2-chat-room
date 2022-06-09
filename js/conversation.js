@@ -51,7 +51,9 @@ function createMessagePanel(type, user, timestamp, message) {
 
     const messageDiv = document.createElement("div");
     messageDiv.classList.add("message-text");
-    messageDiv.innerText = message;
+    // MIGHT BE A MISTAKE
+    // messageDiv.innerText = message;
+    messageDiv.innerHTML = message;
 
     const dateDiv = document.createElement("span");
     dateDiv.classList.add("message-time");
@@ -73,8 +75,6 @@ function sendNewMessage() {
     let message = convInput.value;
     convInput.value = "";
 
-    createMessagePanel("sender", "username", "DATE", message);
-
     const convDiv = document.getElementById("conversation");
     convDiv.scrollTop = convDiv.scrollHeight;
 
@@ -87,6 +87,8 @@ function sendNewMessage() {
             `id=${id}&author=${author}&timestamp=${timestamp}&message=${message}`,
             request => {
                 if (request.responseText) {
+                    // Change with only an update
+                    createMessagePanel("sender", "username", "DATE", request.responseText);
                 }
             }, on_failure)
 
