@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION["pseudo"])) {
-        header("Location: signup.php");
+        header("Location: php/signin.php");
         exit();
     } else {
         $pseudo = $_SESSION["pseudo"];

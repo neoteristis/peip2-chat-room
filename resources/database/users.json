@@ -1,1 +1,37 @@
-{"userone":{"firstname":"userone","lastname":"userone","password":"150b2d9625d095772a7e9f66dc3f2715","avatar":"https://avatars.dicebear.com/api/adventurer-neutral/userone.svg","channels":""},"azer":{"firstname":"aezr","lastname":"azer","password":"13085a63a2b3e4beb7ab10ee395aefe4","avatar":"https://avatars.dicebear.com/api/adventurer-neutral/azer.svg","channels":""},"":{"firstname":null,"lastname":null,"password":"d41d8cd98f00b204e9800998ecf8427e","avatar":"https://avatars.dicebear.com/api/adventurer-neutral/.svg","channels":""},"test":{"firstname":"test","lastname":"test","password":"098f6bcd4621d373cade4e832627b4f6","avatar":"https://avatars.dicebear.com/api/adventurer-neutral/test.svg","channels":""}}
+{
+    "Userone": {
+        "firstname": "userone",
+        "lastname": "userone",
+        "password": "150b2d9625d095772a7e9f66dc3f2715",
+        "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/userone.svg",
+        "channels": ""
+    },
+    "Azer": {
+        "firstname": "aezr",
+        "lastname": "azer",
+        "password": "13085a63a2b3e4beb7ab10ee395aefe4",
+        "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/azer.svg",
+        "channels": ""
+    },
+    "": {
+        "firstname": null,
+        "lastname": null,
+        "password": "d41d8cd98f00b204e9800998ecf8427e",
+        "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/.svg",
+        "channels": ""
+    },
+    "Test": {
+        "firstname": "test",
+        "lastname": "test",
+        "password": "098f6bcd4621d373cade4e832627b4f6",
+        "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/test.svg",
+        "channels": ""
+    },
+    "Jaimito": {
+        "firstname": "Jaime",
+        "lastname": "Alba",
+        "password": "303446dcb370baa9f49e1d7f33fc34a3",
+        "avatar": "https://avatars.dicebear.com/api/adventurer-neutral/Jaimito.svg",
+        "channels": []
+    }
+}
