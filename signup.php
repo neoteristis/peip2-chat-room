@@ -15,7 +15,7 @@
     <h2>Formulaire d'inscription</h2>
 
     <!--<form action="dosignup.php" method="post" onsubmit="return checkform()" onreset="resetform()">-->
-    <form action="nothing.php" method="post" onsubmit="return checkform()" onreset="resetform()" id="signup-form">
+    <form action="dosignup.php" method="post" onsubmit="return checkform()" onreset="resetform()" id="signup-form">
         Choisissez votre pseudo (minimum 3 caractères, uniquement des lettres minuscules ou majuscules)
         <br>
         <label for="pseudo"></label>
